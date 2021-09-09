@@ -333,7 +333,7 @@ img{
 .skills_python{
     width:85%;
 }
-.skills-img{
+.skills_img{
     border-radius: .5rem;
 }
 
@@ -460,12 +460,19 @@ img{
     }
 
 
-    .about_container .skills_container{
-        grid-template-columns: repeat(2,1fr);
+    .about_container {
+        grid-template-columns: repeat(2, 1fr);
         align-items: center;
         text-align: initial;
-
     }
+
+
+    .skills_container{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        text-align: initial;
+    }
+    
     .about_img img{
         width: 300px;
     }
@@ -489,5 +496,19 @@ img{
     }
     .home_img{
         right: 10%;
+    }
+
+
+    .about_container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        text-align: initial;
+    }
+
+
+    .skills_container{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        text-align: initial;
     }
 }
