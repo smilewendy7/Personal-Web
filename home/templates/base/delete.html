@@ -1,0 +1,23 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<div class="main-container">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <a class="contact_button" href="{% url 'posts' %}">&laquo Back to Posts</a>
+        <p>Are you sure you want to delete {{item}}? </p>
+        <input type="submit" value="Confirm" class="contact_button button">
+        
+    </form>
+</div>
+
+{% endblock content %}

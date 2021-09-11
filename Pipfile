@@ -12,6 +12,12 @@ psycopg2-binary = "*"
 django-on-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
+pillow = "*"
+django-crispy-forms = "*"
+django-filter = "*"
+django-ckeditor = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 

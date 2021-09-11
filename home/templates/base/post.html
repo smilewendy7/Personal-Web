@@ -1,6 +1,26 @@
 {% extends 'base/main.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Post title</h1>
+
+<style>
+    img{
+        max-width:50%;
+        object-fit:cover;
+    }
+</style>
+
+<div class = "main-container">
+
+    <img src="{%static 'images/p-dog.jpg'%}">
+    <h1>{{post.headline}}</h1>
+
+    <h4>{{post.sub_headline}}</h4>
+
+    
+
+    <p>{{post.body|safe}}</p>
+</div>
+
 
 {% endblock content %}

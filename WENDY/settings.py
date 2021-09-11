@@ -53,10 +53,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'django_extensions',
+    'crispy_forms',
+    'django_filters',
+    'ckeditor',
+    'ckeditor_uploader',
+    'storages',
+
 
     # Project-specific
     'home',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     ### white noise
@@ -145,6 +152,27 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
+### sending email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'smilewendy7@gmail.com'
+EMAIL_HOST_PASSWORD = 'qyipekcqffvfsbxz'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+
+### ckeditor config
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+
 # Custom user model
 
 AUTH_USER_MODEL = 'home.User'
@@ -165,3 +193,18 @@ INTERNAL_IPS = [
 import django_on_heroku
 django_on_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
+
+
+# AWS Config
+if env("USE_S3"):
+    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = "public-read"
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+

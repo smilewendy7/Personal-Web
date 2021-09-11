@@ -147,18 +147,25 @@
 
       <!-- ==== Projects ==== -->
       <section class="work section" id="work">
-          <h2 class="section-title">Projects</h2>
-
+          <h2 class="section-title"><a href="{% url 'posts' %}">Projects</a></h2>
+          
+          
           <div class="work_container bd-grid">
+              {% for post in posts %}
               <div class="work_img">
-                <img src="{% static 'images/savr3.png' %}"  alt="">
+                <img src="{{post.thumbnail.url}}"  class= "thumbnail">
+                    <div class= "post-preview">
+                        <h6 class="post-title">{{post.headline}}</h6>
+                        <a href="{%url 'post' post.slug %}">Read More</a>
+                    </div>
               </div>
-
-              <div class="work_img">
-                <img src="{% static 'images/HabitTracker.png' %}" alt="">
-              </div>
-
+              {% empty %}
+                <h3>No posts found ...</h3>
+              {% endfor %}
           </div>
+          
+          
+          
       </section>
 
       <!-- ==== Contact ==== -->
@@ -166,12 +173,13 @@
           <h2 class="section-title">Contact</h2>
 
           <div class="contact_container bd-grid">
-              <form action="" class= "contact_form">
-                  <input type="text" placeholder="Name" class= "contact_input">
-                  <input type="mail" placeholder="Email" class= "contact_input">
-                  <textarea name="" id="" cols="0" rows="10" class= "contact_input"></textarea>
+              <form action="{% url 'send_email' %}" class= "contact_form" method="POST">
+                  {% csrf_token %}
+                  <input type="text" placeholder="Name" class= "contact_input", name="name">
+                  <input type="mail" placeholder="Email" class= "contact_input", name="email">
+                  <textarea name="message" id="" cols="0" rows="10" class= "contact_input"></textarea>
 
-                  <input type="button" value="Submit" class="contact_button button">
+                  <input type="submit" value="Send" class="contact_button button">
               </form>
           </div>
       </section>
