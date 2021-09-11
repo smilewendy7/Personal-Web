@@ -88,7 +88,7 @@ img{
 /* ====== CLASS CSS ======== */
 
 .section-title {
-    position: relativs;
+    position: relative;
     font-size: var(--h2-font-size);
     color: var(--first-color);
     margin-top: var(--mb-2); 
@@ -246,14 +246,26 @@ img{
     width: 295px;
 }
 /* BUTTONS */
+
 .button{
     display: inline-block;
     background-color: var(--first-color);
     color:#fff;
     padding: .75rem 2.5rem;
     font-weight: var(--font-semi);
+    border-radius:  0.5rem;
+}
+
+/* button */
+.back_button{
+    display: inline-block;
+    background-color: var(--first-color);
+    color:#fff;
+    padding: .45rem 1rem;
+    font-weight: 400;
     border-radius:  .5rem;
 }
+
 .button:hover{
     /* does here show color?  */
     box-shadow: 0 10px 36px rbga(0,0,0,.15);
@@ -274,7 +286,6 @@ img{
     width: 200px;
     border-radius: .5rem;
 }
-
 
 
 /* ==== SKILLS ==== */
@@ -355,6 +366,18 @@ img{
 }
 .work_img img:hover{
     transform: scale(1.1);
+}
+
+/* tags */
+
+.tag{
+	display:inline-block;
+	color:#fff;
+	background-color: #888;
+	border-radius: 5px;
+	margin: 2px;
+	padding: 2px 5px;
+	font-size: 12px;	
 }
 
 /* ==== CONTACT ==== */
@@ -511,4 +534,6 @@ img{
         align-items: center;
         text-align: initial;
     }
+
+    
 }

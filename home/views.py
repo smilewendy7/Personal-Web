@@ -6,6 +6,7 @@ from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
+from .decorators import *
 
 from .forms import PostForm
 from .filters import PostFilter
@@ -53,7 +54,7 @@ def profile(request):
 
 
 ### CRUD VIEWS
-
+@admin_only
 @login_required(login_url="home")
 def createPost(request):
     form = PostForm()
@@ -68,6 +69,7 @@ def createPost(request):
     return render(request, 'base/post_form.html', context)
 
 
+@admin_only
 @login_required(login_url="home")
 def updatePost(request, slug):
     post = Post.objects.get(slug=slug)
@@ -82,7 +84,7 @@ def updatePost(request, slug):
     context = {'form': form}
     return render(request, 'base/post_form.html', context)
 
-
+@admin_only
 @login_required(login_url="home")
 def deletePost(request,slug):
     post = Post.objects.get(slug=slug)
